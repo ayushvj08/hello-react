@@ -11,13 +11,13 @@ function App() {
           <h1 className="text-center text-gray-500 text-2xl">Pending</h1>
           <TaskCard
             title="Build website with static content"
-            dueDate="Due On: 10th April"
-            assigneeName="Asignee: Rohit S"
+            dueDate="10th April"
+            assigneeName="Rohit S"
           />
           <TaskCard
             title="Add Blog"
-            dueDate="Due On: 22nd March"
-            assigneeName="Asignee: Rohit M"
+            dueDate="22nd March"
+            assigneeName="Rohit M"
           />
 
           <div className="bg-gray-300 p-2 rounded">
@@ -28,13 +28,13 @@ function App() {
           <h1 className="text-center text-gray-500 text-2xl">Done</h1>
           <TaskCard
             title="Design the mockup"
-            completedAtDate="Completed On: 10th April"
-            assigneeName="Asignee: Rohit M"
+            completedAtDate="10th April"
+            assigneeName="Rohit M"
           />
           <TaskCard
             title="Get Approval from principal"
-            completedAtDate="Completed On: 20th April"
-            assigneeName="Asignee: Ajay S"
+            completedAtDate="20th April"
+            assigneeName="Ajay S"
           />
         </div>
       </section>
