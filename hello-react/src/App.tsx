@@ -1,6 +1,12 @@
 import React from "react";
 import TaskCard from "./TaskCard";
 
+const pps = {
+  title: "Build website with static content",
+  dueDate: "10th April",
+  assigneeName: "Rohit S",
+};
+
 function App() {
   return (
     <div className="container-div w-4/5 md:w-3/5 mt-12 mx-auto">
@@ -11,11 +17,7 @@ function App() {
       <section className="flex flex-row flex-wrap justify-between font-bold mt-4">
         <div className="border-2 border-gray-500 md:w-5/12 rounded-3xl p-4 pb-32 mb-4">
           <h1 className="text-center text-gray-500 text-2xl">Pending</h1>
-          <TaskCard
-            title="Build website with static content"
-            dueDate="10th April"
-            assigneeName="Rohit S"
-          />
+          <TaskCard {...pps} />
           <TaskCard
             title="Add Blog"
             dueDate="22nd March"
