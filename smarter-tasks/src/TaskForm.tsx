@@ -61,6 +61,7 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
       <form onSubmit={this.addTask}>
         <input
           required
+          id="todoTitle"
           placeholder="title"
           type="text"
           value={this.state.task.title}
@@ -80,7 +81,9 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
           value={this.state.task.dueDate}
           onChange={this.dueDateChanged}
         />
-        <button type="submit">Add item</button>
+        <button id="addTaskButton" type="submit">
+          Add item
+        </button>
       </form>
     );
   }
