@@ -9,34 +9,24 @@ import NotFound from "./NotFound";
 function App() {
   const location = useLocation();
 
-  const definedRoutes = ["/", "/tasks", "/tasks/:id", "/signin", "/notfound"];
-  const routesWithoutHeader = ["/signin", "/notfound"];
+  const pathsWithoutHeader = ["/signin", "/notfound"];
   return (
-    <div className="app">
-      {definedRoutes.includes(location.pathname) ? (
-        <div>
-          {routesWithoutHeader.includes(location.pathname) ? null : <Header />}
-
-          <Routes>
-            <Route
-              path="/"
-              element={<ProtectedRoute element={<HomePage />} />}
-            />
-            <Route
-              path="/tasks"
-              element={<ProtectedRoute element={<TaskApp />} />}
-            />
-            <Route
-              path="/tasks/:id"
-              element={<ProtectedRoute element={<TaskDetailsPage />} />}
-            />
-            <Route path="/signin" element={<Signin />} />
-            <Route path="/notfound" element={<NotFound />} />
-          </Routes>
-        </div>
-      ) : (
-        <Navigate to="/notfound" />
-      )}
+    <div>
+      {!pathsWithoutHeader.includes(location.pathname) && <Header />}
+      <Routes>
+        <Route path="/" element={<ProtectedRoute element={<HomePage />} />} />
+        <Route
+          path="/tasks"
+          element={<ProtectedRoute element={<TaskApp />} />}
+        />
+        <Route
+          path="/tasks/:id"
+          element={<ProtectedRoute element={<TaskDetailsPage />} />}
+        />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/notfound" element={<NotFound />} />
+        <Route index path="*" element={<Navigate to="notfound" />} />
+      </Routes>
     </div>
   );
 }
