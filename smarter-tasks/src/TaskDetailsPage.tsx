@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 
 interface TaskDetailsPageParams extends Record<string, string> {
   id: string;
@@ -15,7 +15,7 @@ const TaskDetailsPage = () => {
 
   return (
     <div>
-      <h3>{task ? task.title : null}</h3>
+      <h3>{task ? task.title : <Navigate to="/notfound" />}</h3>
       <p>This is the Task Details page for task with ID: {id}</p>
     </div>
   );
