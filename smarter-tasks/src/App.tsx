@@ -6,6 +6,7 @@ import Header from "./Header";
 import Signin from "./Signin";
 import { ProtectedRoute } from "./ProtectedRoute";
 import NotFound from "./NotFound";
+
 function App() {
   const location = useLocation();
 
