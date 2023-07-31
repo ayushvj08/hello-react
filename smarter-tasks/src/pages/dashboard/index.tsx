@@ -19,7 +19,7 @@ const Dashboard: React.FC = () => {
   const logoutUser = () => {
     localStorage.removeItem("userData");
     localStorage.removeItem("authToken");
-    navigate("/");
+    navigate("/signin");
   };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
