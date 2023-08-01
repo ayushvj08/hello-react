@@ -39,6 +39,7 @@ const SigninForm: React.FC = () => {
         <label className="block text-gray-700 font-semibold mb-2">Email:</label>
         <input
           type="email"
+          required
           name="email"
           id="email"
           value={email}
@@ -52,6 +53,7 @@ const SigninForm: React.FC = () => {
         </label>
         <input
           type="password"
+          required
           name="password"
           id="password"
           value={password}

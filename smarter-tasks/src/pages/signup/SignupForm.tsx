@@ -50,6 +50,7 @@ const SignupForm: React.FC = () => {
         <input
           type="text"
           name="organisationName"
+          required
           id="organisationName"
           value={organisationName}
           onChange={(e) => setOrganisationName(e.target.value)}
@@ -63,6 +64,7 @@ const SignupForm: React.FC = () => {
         <input
           type="text"
           name="userName"
+          required
           id="userName"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
@@ -73,6 +75,7 @@ const SignupForm: React.FC = () => {
         <label className="block text-gray-700 font-semibold mb-2">Email:</label>
         <input
           type="email"
+          required
           name="userEmail"
           id="userEmail"
           value={userEmail}
@@ -87,6 +90,7 @@ const SignupForm: React.FC = () => {
         <input
           type="password"
           name="userPassword"
+          required
           id="userPassword"
           value={userPassword}
           onChange={(e) => setUserPassword(e.target.value)}
