@@ -33,7 +33,10 @@ const Dashboard: React.FC = () => {
               <label className="inline p-2 text-gray-700 font-semibold mb-2">
                 Name:
               </label>
-              <p className="inline p-2 text-gray-700 font-semibold mb-2">
+              <p
+                id="name"
+                className="inline p-2 text-gray-700 font-semibold mb-2"
+              >
                 {user.name}
               </p>
             </div>
@@ -41,18 +44,21 @@ const Dashboard: React.FC = () => {
               <label className="inline p-2 text-gray-700 font-semibold mb-2">
                 Email:
               </label>
-              <p className="inline p-2 text-gray-700 font-semibold mb-2">
+              <p
+                id="email"
+                className="inline p-2 text-gray-700 font-semibold mb-2"
+              >
                 {user.email}
               </p>
             </div>
           </div>
-          <p
+          <button
             onClick={logoutUser}
             className="p-2 cursor-pointer"
             id="logout-link"
           >
             Logout
-          </p>
+          </button>
         </form>
       </div>
     </div>
