@@ -10,7 +10,7 @@ const pps = {
 function App() {
   return (
     <div className="container-div w-4/5 md:w-3/5 mt-12 mx-auto">
-      <h1 className="text-3xl text-gray-600 font-bold my-2">Smarter Tasks</h1>
+      <h1 className="text-3xl text-gray-600 font-bold my-2"> Smarter Task</h1>
       <p className="my-2 text-xl">
         Project: Graduation Final Year Project (Revamp College Website)
       </p>
