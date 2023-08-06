@@ -1,5 +1,5 @@
-import React from "react";
 import TaskCard from "./TaskCard";
+import "./App.css";
 
 const pps = {
   title: "Build website with static content",
