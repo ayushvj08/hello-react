@@ -10,10 +10,10 @@ function App() {
   return (
     <>
       <div className="bg-white-500 p-4 text-left">
-        <h2 className="text-black text-3xl font-bold mb-2">Smarter Tasks</h2>
+        <h2 className="text-black text-3xl font-bold mb-2">Smarter Task</h2>
         <p className="text-black">
           <strong>Project:</strong>{" "}
-          <span>Graduation Final Year project (Revamp College Website)</span>
+          <span>Graduation Final Year Project (Revamp College Website)</span>
         </p>
 
         <div className="flex px-2.5">
