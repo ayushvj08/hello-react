@@ -8,7 +8,7 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div>
+    <>
       <div className="bg-white-500 p-4 text-left">
         <h2 className="text-black text-3xl font-bold mb-2">Smarter Tasks</h2>
         <p className="text-black">
@@ -34,7 +34,10 @@ function App() {
           />
 
           <div className="button">
-            <button className=" hover:bg-white-600 text-black font-bold py-2 px-4 rounded ">
+            <button
+              type="button"
+              className=" hover:bg-white-600 text-black font-bold py-2 px-4 rounded "
+            >
               <p>+ New Task</p>
             </button>
           </div>
@@ -55,7 +58,7 @@ function App() {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
