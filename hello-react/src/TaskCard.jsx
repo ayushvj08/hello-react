@@ -1,19 +1,18 @@
 import "./TaskCard.css";
 
 const TaskCard = (props) => {
-  // eslint-disable-next-line react/prop-types
-  const { title, dueDate, completedAtDate, assigneeName } = props;
+  console.log(props);
+  let check;
+  if (props.dueDate) {
+    check = "Due on: " + props.dueDate;
+  } else {
+    check = "Completed on: " + props.completedAtDate;
+  }
   return (
-    <div className="TaskItem border-4 border-gray-500 rounded p-4 my-4">
-      <h2 className="text-xl font-bold my-2">{title}</h2>
-      <p className="font-normal">
-        {dueDate
-          ? "Due on: " + dueDate
-          : completedAtDate
-          ? "Completed on: " + completedAtDate
-          : null}
-      </p>
-      <p className="font-normal">Assignee: {assigneeName}</p>
+    <div className="TaskItem">
+      <h2 className="text-xl font-bold px-2 py-2">{props.title}</h2>
+      <p className="px-2">{check}</p>
+      <p className="px-2">Assignee: {props.assigneeName}</p>
     </div>
   );
 };
