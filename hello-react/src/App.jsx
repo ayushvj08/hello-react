@@ -1,7 +1,12 @@
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
 import "./App.css";
 import TaskCard from "./TaskCard";
 
 function App() {
+  const [count, setCount] = useState(0);
+
   return (
     <>
       <div className="bg-white-500 p-4 text-left">
@@ -14,9 +19,9 @@ function App() {
 
       <div className="flex px-2.5">
         <div className="w-1/2 border border-white-10 rounded-2xl p-4 mr-4 text-left fill-c">
-          <h2 className="text-black text-2xl font-bold mb-2 text-center">
+          <h1 className="text-black text-2xl font-bold mb-2 text-center">
             Pending
-          </h2>
+          </h1>
           <TaskCard
             title="Build the website with static content"
             dueDate="10th April"
@@ -35,9 +40,9 @@ function App() {
           </div>
         </div>
         <div className="w-1/2 border border-white-10 rounded-2xl p-4 ml-4 text-left">
-          <h2 className="text-black text-2xl font-bold mb-2 text-center">
+          <h1 className="text-black text-2xl font-bold mb-2 text-center">
             Done
-          </h2>
+          </h1>
           <TaskCard
             title="Design the mockup"
             completedAtDate="10th April"
