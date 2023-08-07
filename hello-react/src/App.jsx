@@ -18,7 +18,24 @@ function App() {
       </div>
 
       <div className="flex px-2.5">
-        <div className="w-1/2 border border-white-10 rounded-2xl p-4 mr-4 text-left fill-c">
+        <div className="border-2 border-gray-500 md:w-5/12 rounded-3xl p-4 pb-32 mb-4">
+          <h1 className="text-center text-gray-500 text-2xl">pending</h1>
+          <TaskCard
+            title="Build website with static content"
+            dueDate="10th April"
+            assigneeName="Rohit S"
+          />
+          <TaskCard
+            title="Add Blog"
+            dueDate="22nd March"
+            assigneeName="Rohit M"
+          />
+
+          <div className="bg-gray-300 p-2 rounded">
+            <h3 className="font-semibold text-xl text-gray-500 ">+ New Task</h3>
+          </div>
+        </div>
+        {/* <div className="w-1/2 border border-white-10 rounded-2xl p-4 mr-4 text-left fill-c">
           <h2 className="text-black text-2xl font-bold mb-2 text-center">
             Pending
           </h2>
@@ -41,7 +58,7 @@ function App() {
               <p>+ New Task</p>
             </button>
           </div>
-        </div>
+        </div> */}
         <div className="w-1/2 border border-white-10 rounded-2xl p-4 ml-4 text-left">
           <h2 className="text-black text-2xl font-bold mb-2 text-center">
             Done
