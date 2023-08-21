@@ -1,13 +1,16 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment, useState, useContext } from "react";
 import { API_ENDPOINT } from "../../config/constants";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { ThemeContext } from "../../context/theme";
 
 type Inputs = {
   name: string;
 };
 
 const NewProject = () => {
+  const { theme } = useContext(ThemeContext);
+
   const {
     register,
     handleSubmit,
@@ -84,10 +87,12 @@ const NewProject = () => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel
+                  className={`${theme} dark:bg-gray-800 dark:border-gray-700 w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"`}
+                >
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
+                    className="dark:text-gray-300 text-lg font-medium leading-6 text-gray-900"
                   >
                     Create new project
                   </Dialog.Title>
@@ -98,7 +103,7 @@ const NewProject = () => {
                         placeholder="Enter project name..."
                         autoFocus
                         {...register("name", { required: true })}
-                        className={`w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
+                        className={`dark:bg-gray-700 dark:text-gray-100 w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
                           errors.name ? "border-red-500" : ""
                         }`}
                       />
