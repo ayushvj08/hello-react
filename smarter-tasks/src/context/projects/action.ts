@@ -17,8 +17,8 @@ export const fetchProjects = async (dispatch: ProjectsDispatch) => {
     }
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any, react-refresh/only-export-components
-export const addProject = async (dispatch: ProjectsDispatch, args: any) => {
+
+export const addProject = async (dispatch: ProjectsDispatch, args: {name: string}) => {
     try {
       const token = localStorage.getItem("authToken") ?? "";
       const response = await fetch(`${API_ENDPOINT}/projects`, {
