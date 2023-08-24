@@ -15,10 +15,8 @@ export const ThemeProvider: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
   const [theme, setTheme] = useState("light");
-  const valueToShare = {
-    theme: theme,
-    setTheme: setTheme,
-  };
+  const valueToShare = { theme, setTheme };
+
   return (
     <ThemeContext.Provider value={valueToShare}>
       {children}

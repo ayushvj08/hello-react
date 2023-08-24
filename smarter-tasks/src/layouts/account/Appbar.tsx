@@ -48,7 +48,7 @@ const Appbar = () => {
                 <div className="flex-shrink-0">
                   <img className="h-8 rounded" src={Logo} alt="Smarter Tasks" />
                 </div>
-                <div className="hidden md:block">
+                <div className="hidden sm:block">
                   <div className="ml-10 flex items-baseline space-x-4">
                     {navigation.map((item) => {
                       const isCurrent = pathname.includes(item.href);
@@ -72,7 +72,7 @@ const Appbar = () => {
                   </div>
                 </div>
               </div>
-              <div className="hidden md:block">
+              <div className="hidden sm:block">
                 <div className="ml-4 flex items-center md:ml-6">
                   <Switch
                     checked={enabled}
