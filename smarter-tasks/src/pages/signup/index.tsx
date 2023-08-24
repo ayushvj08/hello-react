@@ -1,9 +1,7 @@
 import React from "react";
-// Dialogue 1: Just import the file
 import SignupForm from "./SignupForm";
 
 const Signup: React.FC = () => {
-  // Dialogue 2: And use it after the h2 tag
   return (
     <div className="px-1 min-h-screen flex items-center justify-center bg-gray-100">
       <div className="max-w-md w-full px-6 py-8 bg-white rounded-lg shadow-md">
