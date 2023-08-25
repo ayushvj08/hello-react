@@ -49,6 +49,7 @@ const SigninForm: React.FC = () => {
         <label className="block text-gray-700 font-semibold mb-2">Email:</label>
         <input
           type="email"
+          id="email"
           {...register("email", { required: true })}
           className={`w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
             errors.email ? "border-red-500" : ""
@@ -64,6 +65,7 @@ const SigninForm: React.FC = () => {
         </label>
         <input
           type="password"
+          id="password"
           {...register("password", { required: true })}
           className={`w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
             errors.password ? "border-red-500" : ""

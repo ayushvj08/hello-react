@@ -60,6 +60,7 @@ const SignupForm: React.FC = () => {
         </label>
         <input
           type="text"
+          id="organisationName"
           {...register("organisationName", { required: true })}
           className={`w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
             errors.organisationName ? "border-red-500" : ""
@@ -75,6 +76,7 @@ const SignupForm: React.FC = () => {
         </label>
         <input
           type="text"
+          id="userName"
           {...register("userName", { required: true })}
           className={`w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
             errors.userName ? "border-red-500" : ""
@@ -88,6 +90,7 @@ const SignupForm: React.FC = () => {
         <label className="block text-gray-700 font-semibold mb-2">Email:</label>
         <input
           type="email"
+          id="userEmail"
           {...register("userEmail", { required: true })}
           className={`w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
             errors.userEmail ? "border-red-500" : ""
@@ -103,6 +106,7 @@ const SignupForm: React.FC = () => {
         </label>
         <input
           type="password"
+          id="userPassword"
           {...register("userPassword", { required: true })}
           className={`w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
             errors.userPassword ? "border-red-500" : ""
