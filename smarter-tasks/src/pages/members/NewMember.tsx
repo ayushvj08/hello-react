@@ -87,6 +87,7 @@ const NewMember = () => {
                       {error && <span>{error}</span>}
                       <input
                         type="text"
+                        id="name"
                         placeholder="Enter Member name..."
                         autoFocus
                         {...register("name", { required: true })}
@@ -102,6 +103,7 @@ const NewMember = () => {
 
                       <input
                         type="email"
+                        id="email"
                         placeholder="Enter Member email..."
                         autoFocus
                         {...register("email", { required: true })}
@@ -117,6 +119,7 @@ const NewMember = () => {
 
                       <input
                         type="text"
+                        id="password"
                         placeholder="Enter Member Password..."
                         autoFocus
                         {...register("password", { required: true })}
