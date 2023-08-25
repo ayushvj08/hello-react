@@ -28,9 +28,8 @@ const MemberListItems = () => {
             <h5 className="mb-2 text-xl font-medium tracking-tight text-gray-900 dark:text-white">
               {member.name}
             </h5>
-            <button>
+            <button onClick={() => removeMemberHandler(member.id)}>
               <svg
-                onClick={() => removeMemberHandler(member.id)}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
