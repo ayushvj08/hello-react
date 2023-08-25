@@ -3,7 +3,7 @@ import { Fragment, useContext, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ThemeContext } from "../../context/theme";
 
-import { addProject } from "../../context/projects/action";
+import { addProject } from "../../context/projects/actions";
 
 // Then I'll import the useProjectsDispatch hook from projects context
 import { ProjectsDispatchContext } from "../../context/projects/context";

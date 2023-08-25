@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { fetchProjects } from "../../context/projects/action";
+import { fetchProjects } from "../../context/projects/actions";
 import { ProjectsDispatchContext } from "../../context/projects/context";
 import ProjectListItems from "./ProjectListItems";
 
