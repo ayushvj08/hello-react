@@ -35,7 +35,8 @@ const MemberListItems = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="hidden group-hover:block w-6 h-6 cursor-pointer"
+              {/* hidden group-hover:block */}
+                className="w-6 h-6 cursor-pointer"
               >
                 <path
                   strokeLinecap="round"
