@@ -35,7 +35,7 @@ const MemberListItems = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-              {/* hidden group-hover:block */}
+                // hidden group-hover:block
                 className="w-6 h-6 cursor-pointer"
               >
                 <path
