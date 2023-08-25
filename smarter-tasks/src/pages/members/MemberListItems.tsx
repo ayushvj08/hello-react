@@ -1,48 +1,22 @@
-import { useEffect, useState } from "react";
-import { Member } from "./MemberList";
-import { API_ENDPOINT } from "../../config/constants";
+import { useContext } from "react";
+import { Member } from "../../context/members/reducer";
+import { MemberContext } from "../../context/members/context";
+import { removeMember } from "../../context/members/actions";
 
 const MemberListItems = () => {
-  const [members, setMembers] = useState<Member[]>([]);
+  const { state, dispatch } = useContext(MemberContext);
+  const { members, isLoading, isError, errorMessage } = state;
 
-  useEffect(() => {
-    fetchMembers();
-  }, []);
-  const fetchMembers = async () => {
-    try {
-      const token = localStorage.getItem("authToken") ?? "";
-      const response = await fetch(`${API_ENDPOINT}/users`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const data = await response.json();
-      //   console.log(data);
-      setMembers(data);
-    } catch (error) {
-      console.log("Error Fetching Members: ", error);
-    }
+  const removeMemberHandler = (id: number) => {
+    removeMember(id, dispatch);
   };
 
-  const removeMember = async (id: number) => {
-    try {
-      const token = localStorage.getItem("authToken") ?? "";
-      const response = await fetch(`${API_ENDPOINT}/users/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const data = await response.json();
-      //   console.log(data);
-      if (data === 1) setMembers(members.filter((member) => member.id !== id));
-    } catch (error) {
-      console.log("Error Deleting Member: ", error);
-    }
-  };
+  if (isLoading) {
+    return <div>Loading ...</div>;
+  }
+  if (isError) {
+    return <span>{errorMessage}</span>;
+  }
   return (
     <>
       {members.map((member: Member) => (
@@ -55,7 +29,7 @@ const MemberListItems = () => {
               {member.name}
             </h5>
             <svg
-              onClick={() => removeMember(member.id)}
+              onClick={() => removeMemberHandler(member.id)}
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"

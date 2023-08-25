@@ -3,6 +3,7 @@ import { useContext } from "react";
 import router from "./routes";
 import { ThemeContext } from "./context/theme";
 import { ProjectsProvider } from "./context/projects/context";
+import { MemberContextProvider } from "./context/members/context";
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
@@ -13,7 +14,9 @@ const App = () => {
       }`}
     >
       <ProjectsProvider>
-        <RouterProvider router={router} />
+        <MemberContextProvider>
+          <RouterProvider router={router} />
+        </MemberContextProvider>
       </ProjectsProvider>
     </div>
   );

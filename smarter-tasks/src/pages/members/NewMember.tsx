@@ -2,9 +2,9 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useContext, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ThemeContext } from "../../context/theme";
-import { API_ENDPOINT } from "../../config/constants";
+import { MemberContext } from "../../context/members/context";
+import { addMember } from "../../context/members/actions";
 
-// Then I'll import the useProjectsDispatch hook from projects context
 type Inputs = {
   name: string;
   email: string;
@@ -13,14 +13,15 @@ type Inputs = {
 const NewMember = () => {
   const { theme } = useContext(ThemeContext);
   const [isOpen, setIsOpen] = useState(false);
-  //   const [error, setError] = useState(null);
+  const { dispatch } = useContext(MemberContext);
+  const [error, setError] = useState(null);
 
-  // Then I'll call the useProjectsDispatch function to get the dispatch function for projects
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
+
   const closeModal = () => {
     setIsOpen(false);
   };
@@ -28,35 +29,14 @@ const NewMember = () => {
     setIsOpen(true);
   };
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const { name, email, password } = data;
+    // const { name, email, password } = data;
+    const response = await addMember(dispatch, data);
 
-    // Next, I'll call the addProject function with two arguments:
-    //`dispatchProjects` and an object with `name` attribute.
-    // As it's an async function, we will await for the response.
-    // const response = await addProject(dispatchProjects, { name });
-    try {
-      const token = localStorage.getItem("authToken") ?? "";
-      const response = await fetch(`${API_ENDPOINT}/users`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ name, email, password }),
-      });
-      const data = await response.json();
-      console.log(data);
-      // setMembers(data);
-      if (response.ok) {
-        setIsOpen(false);
-      } else {
-        // Or I'll set the error.
-        // setError(response.error as React.SetStateAction<null>);
-      }
-    } catch (error) {
-      console.log("Error Fetching Members: ", error);
+    if (response.ok) {
+      setIsOpen(false);
+    } else {
+      setError(response.error as React.SetStateAction<null>);
     }
-    // Then depending on response, I'll either close the modal...
   };
   return (
     <>
@@ -95,7 +75,6 @@ const NewMember = () => {
                 <Dialog.Panel
                   className={`${theme} dark:bg-gray-900 dark:border-gray-700 w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"`}
                 >
-                  {/* className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"> */}
                   <Dialog.Title
                     as="h3"
                     className="dark:text-gray-300 text-lg font-medium leading-6 text-gray-900"
@@ -104,8 +83,7 @@ const NewMember = () => {
                   </Dialog.Title>
                   <div className="mt-2">
                     <form onSubmit={handleSubmit(onSubmit)}>
-                      {/* I'll show the error, if it exists.*/}
-                      {/* {error && <span>{error}</span>} */}
+                      {error && <span>{error}</span>}
                       <input
                         type="text"
                         placeholder="Enter Member name..."
