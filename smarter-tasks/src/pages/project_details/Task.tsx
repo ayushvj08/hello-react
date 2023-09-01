@@ -29,7 +29,7 @@ const Task = forwardRef<
               <p className="text-sm text-slate-500">
                 Description: {task.description}
               </p>
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-slate-500 pb-1">
                 Assignee: {task.assignedUserName ?? "-"}
               </p>
             </div>

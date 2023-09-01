@@ -38,11 +38,13 @@ export const commentReducer = (state: CommentState, action: CommentActions) => {
     case "FETCH_COMMENTS_SUCCESS":
       return {
         ...state,
+        isLoading: false,
         comments: action.payload,
       };
     case "FETCH_COMMENTS_FAILURE":
       return {
         ...state,
+        isLoading: false ,
         isError: true,
         errorMessage: action.payload,
       };
@@ -56,6 +58,7 @@ export const commentReducer = (state: CommentState, action: CommentActions) => {
     case "CREATE_COMMENTS_FAILURE":
       return {
         ...state,
+        isLoading: false ,
         isError: true,
         errorMessage: action.payload,
       };
