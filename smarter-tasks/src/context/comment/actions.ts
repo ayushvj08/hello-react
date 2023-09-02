@@ -1,7 +1,6 @@
 import React from "react";
 import { API_ENDPOINT } from "../../config/constants";
 import { AvailableActions, CommentActions } from "./types";
-// import { Comment } from "./reducer";
 
 export const fetchComments = async (
   commentDispatch: React.Dispatch<CommentActions>,
@@ -42,13 +41,11 @@ export const addComment = async (
   commentDispatch: React.Dispatch<CommentActions>,
   projectID: string,
   taskID: string,
-  description: string
+  args: {description: string, owner: number}
 ) => {
   try {
     commentDispatch({ type: AvailableActions.CREATE_COMMENTS_REQUEST });
     const token = localStorage.getItem("authToken") ?? "";
-    const owner = JSON.parse(localStorage.getItem("userData") || "")?.id;
-    const args = { description, owner};
     const response = await fetch(
       `${API_ENDPOINT}/projects/${projectID}/tasks/${taskID}/comments`,
       {
@@ -61,9 +58,9 @@ export const addComment = async (
       }
     );
 
-    // if (!response.ok) {
-    //   throw new Error("Failed to fetch task comments");
-    // }
+    if (!response.ok) {
+      throw new Error("Failed to fetch task comments");
+    }
     const data = await response.json();
     if (data.errors && data.errors.length > 0) {
       return { ok: false, error: data.errors[0].message };
@@ -73,6 +70,7 @@ export const addComment = async (
       type: AvailableActions.CREATE_COMMENTS_SUCCESS,
       payload: data,
     });
+    fetchComments(commentDispatch, projectID, taskID)
     console.log(data);
     return { ok: true };
   } catch (error) {
@@ -81,5 +79,7 @@ export const addComment = async (
       type: AvailableActions.CREATE_COMMENTS_FAILURE,
       payload: "Error Creating Comment!",
     });
+    return { ok: false, error };
+
   }
 };

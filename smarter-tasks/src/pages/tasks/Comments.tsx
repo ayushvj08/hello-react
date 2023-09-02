@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
+import { useContext } from "react";
 import { CommentContext } from "../../context/comment/context";
 import { useParams } from "react-router-dom";
-// import { SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { addComment } from "../../context/comment/actions";
 
-// type Inputs = {
-//   description: string;
-// };
+type Inputs = {
+  description: string;
+};
 
 const formatDateForPicker = (isoDate: string) => {
   const dateObj = new Date(isoDate);
@@ -21,40 +21,41 @@ const formatDateForPicker = (isoDate: string) => {
 const Comments = () => {
   const { commentState, commentDispatch } = useContext(CommentContext);
   const { taskID, projectID } = useParams();
-  const [description, setDescription] = useState("");
-  //   const navigate = useNavigate();
-  //   const {
-  //     register,
-  //     handleSubmit,
-  //     formState: { errors },
-  //   } = useForm<Inputs>();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<Inputs>();
 
-  const onSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
-    event.preventDefault();
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    const owner = JSON.parse(localStorage.getItem("userData") || "")?.id;
+    const { description } = data;
+    const response = await addComment(
+      commentDispatch,
+      projectID ?? "",
+      taskID ?? "",
+      { description, owner }
+    );
 
-    try {
-      addComment(commentDispatch, taskID ?? "", projectID ?? "", description);
-      setDescription("");
-    } catch (error) {
-      console.log("Operation Failed!");
+    if (response.ok) {
+      reset();
+      console.log("Comment added");
+    } else {
+      // setError(response.error as React.SetStateAction<null>);
     }
   };
 
   return (
     <div>
       <p className="font-bold mt-2">Comments</p>
-      <form className="flex " onSubmit={onSubmit}>
+      <form className="flex " onSubmit={handleSubmit(onSubmit)}>
         <input
-          //   onFocus={() => navigate("comments")}
           type="text"
           id="commentBox"
           placeholder="Add Comment..."
           className="w-full border rounded-md mr-4 py-2 px-3 my-2 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
-          name="description"
-          required
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          //   {...register("description", { required: true })}
+          {...register("description", { required: true })}
         />
         <input
           type="submit"
@@ -63,9 +64,9 @@ const Comments = () => {
           value={"Add Comment"}
         />
       </form>
-      {/* {errors.description && (
+      {errors.description && (
         <span className="text-red-500">This field is required!</span>
-      )} */}
+      )}
       <div>
         {commentState.isLoading ? (
           <>Loading...</>
@@ -73,7 +74,7 @@ const Comments = () => {
           commentState.comments.map((comment) => {
             return (
               <p className="comment" key={comment.id}>
-                {comment.description} - {comment.User.name} -{" "}
+                {comment.description} - {comment.User?.name} -{" "}
                 {formatDateForPicker(comment.createdAt)}
               </p>
             );
