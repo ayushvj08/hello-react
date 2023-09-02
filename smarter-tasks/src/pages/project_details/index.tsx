@@ -2,7 +2,7 @@ import React from "react";
 import { TasksProvider } from "../../context/task/context";
 import ProjectDetails from "./ProjectDetails";
 import { Outlet } from "react-router-dom";
-import { CommentContextProvider } from "../../context/comments/context";
+import { CommentContextProvider } from "../../context/comment/context";
 
 const ProjectDetailsIndex: React.FC = () => {
   return (

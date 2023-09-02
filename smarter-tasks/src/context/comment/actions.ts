@@ -1,6 +1,6 @@
 import React from "react";
 import { API_ENDPOINT } from "../../config/constants";
-import { AvailableActions, CommentActions } from "./reducer";
+import { AvailableActions, CommentActions } from "./types";
 // import { Comment } from "./reducer";
 
 export const fetchComments = async (

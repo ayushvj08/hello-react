@@ -4,8 +4,8 @@ import { useTasksState } from "../../context/task/context";
 import TaskDetails from "./TaskDetails";
 import { useParams } from "react-router-dom";
 // import { CommentContextProvider } from "../../context/comments/context";
-import { fetchComments } from "../../context/comments/actions";
-import { CommentContext } from "../../context/comments/context";
+import { fetchComments } from "../../context/comment/actions";
+import { CommentContext } from "../../context/comment/context";
 
 const TaskDetailsContainer = () => {
   const { taskID, projectID } = useParams();

@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
-import { CommentContext } from "../../context/comments/context";
+import { CommentContext } from "../../context/comment/context";
 import { useParams } from "react-router-dom";
 // import { SubmitHandler, useForm } from "react-hook-form";
-import { addComment } from "../../context/comments/actions";
+import { addComment } from "../../context/comment/actions";
 
 // type Inputs = {
 //   description: string;

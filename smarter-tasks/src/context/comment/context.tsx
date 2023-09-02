@@ -1,5 +1,6 @@
 import React, { createContext, useReducer } from "react";
-import { CommentActions, CommentState, commentReducer } from "./reducer";
+import { CommentActions, CommentState } from "./types";
+import { commentReducer } from "./reducer";
 
 type CommentContextType = {
   commentState: CommentState;
