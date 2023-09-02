@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import NewProject from "./NewProject";
 const ProjectList = React.lazy(() => import("./ProjectList"));
-// import ErrorBoundary from "../../components/ErrorBoundary";
+import ErrorBoundary from "../../components/ErrorBoundary";
 
 const Projects = () => {
   return (
@@ -10,11 +10,11 @@ const Projects = () => {
         <h2 className="text-2xl font-medium tracking-tight">Projects</h2>
         <NewProject />
       </div>
-      {/* <ErrorBoundary> */}
-      <Suspense fallback={<div className="suspense-loading">Loading...</div>}>
-        <ProjectList />
-      </Suspense>
-      {/* </ErrorBoundary> */}
+      <ErrorBoundary>
+        <Suspense fallback={<div className="suspense-loading">Loading...</div>}>
+          <ProjectList />
+        </Suspense>
+      </ErrorBoundary>
     </>
   );
 };

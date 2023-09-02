@@ -7,8 +7,7 @@ const MemberList = () => {
   const { dispatch } = useContext(MemberContext);
   useEffect(() => {
     fetchMembers(dispatch);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
   return (
     <div className="sm:grid gap-4 grid-cols-4 mt-5">
       <MemberListItems />

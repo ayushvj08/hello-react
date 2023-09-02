@@ -1,33 +1,35 @@
-// /* eslint-disable @typescript-eslint/ban-types */
-// import { Component, ErrorInfo, ReactNode } from "react";
+import { Component, ErrorInfo, ReactNode } from "react";
 
-// interface ErrorBoundaryState {
-//   hasError: boolean;
-// }
+interface Props {
+  children?: ReactNode;
+}
 
-// class ErrorBoundary extends Component<{}, ErrorBoundaryState> {
-//   constructor(props: {}) {
-//     super(props);
-//     this.state = { hasError: false };
-//   }
+interface State {
+  hasError: boolean;
+}
 
-//   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-//   static getDerivedStateFromError(error: Error): ErrorBoundaryState {
-//     return { hasError: true };
-//   }
+class ErrorBoundary extends Component<Props, State> {
+  public state: State = {
+    hasError: false,
+  };
 
-//   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-//     // You can log the error or send it to an error reporting service
-//     console.error("ErrorBoundary caught an error:", error, errorInfo);
-//   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  public static getDerivedStateFromError(_: Error): State {
+    // Update state so the next render will show the fallback UI.
+    return { hasError: true };
+  }
 
-//   render(): ReactNode {
-//     if (this.state.hasError) {
-//       return <div>Something went wrong.</div>;
-//     }
+  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.error("Uncaught error:", error, errorInfo);
+  }
 
-//     return this.props.children;
-//   }
-// }
+  public render() {
+    if (this.state.hasError) {
+      return <h1>Sorry.. there was an error</h1>;
+    }
 
-// export default ErrorBoundary;
+    return this.props.children;
+  }
+}
+
+export default ErrorBoundary;
