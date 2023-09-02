@@ -1,7 +1,8 @@
-import { useContext, useEffect } from "react";
-import MemberListItems from "./MemberListItems";
+import React, { Suspense, useContext, useEffect } from "react";
 import { fetchMembers } from "../../context/members/actions";
 import { MemberContext } from "../../context/members/context";
+
+const MemberListItems = React.lazy(() => import("./MemberListItems"));
 
 const MemberList = () => {
   const { dispatch } = useContext(MemberContext);
@@ -10,7 +11,9 @@ const MemberList = () => {
   }, [dispatch]);
   return (
     <div className="sm:grid gap-4 grid-cols-4 mt-5">
-      <MemberListItems />
+      <Suspense fallback={<div className="suspense-loading">Loading...</div>}>
+        <MemberListItems />
+      </Suspense>
     </div>
   );
 };
