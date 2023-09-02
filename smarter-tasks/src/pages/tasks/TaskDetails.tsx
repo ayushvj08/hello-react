@@ -9,9 +9,7 @@ import { ProjectsStateContext } from "../../context/projects/context";
 import { TaskDetailsPayload } from "../../context/task/types";
 import CheckIcon from "@heroicons/react/24/outline/CheckIcon";
 import { MemberContext } from "../../context/members/context";
-// import CommentBox from "./CommentBox";
-import { CommentContext } from "../../context/comments/context";
-import { addComment } from "../../context/comments/actions";
+import Comments from "./Comments";
 
 // type TaskFormUpdatePayload = TaskDetailsPayload;
 type TaskFormUpdatePayload = TaskDetailsPayload & {
@@ -209,7 +207,7 @@ const TaskDetails = () => {
                       </button>
                     </form>
                   </div>
-                  <CommentBox />
+                  <Comments />
                 </Dialog.Panel>
               </Transition.Child>
             </div>
@@ -221,60 +219,3 @@ const TaskDetails = () => {
 };
 
 export default TaskDetails;
-
-type Inputs = {
-  description: string;
-};
-const CommentBox = () => {
-  const { commentState, commentDispatch } = useContext(CommentContext);
-  const { taskID, projectID } = useParams();
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Inputs>();
-
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    addComment(
-      commentDispatch,
-      taskID ?? "",
-      projectID ?? "",
-      data.description
-    );
-  };
-
-  return (
-    <div>
-      <p className="font-bold mt-2">Comments</p>
-      <form className="flex " onSubmit={handleSubmit(onSubmit)}>
-        <input
-          type="text"
-          placeholder="Add Comment..."
-          className="w-full border rounded-md mr-4 py-2 px-3 my-2 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
-          {...register("description", { required: true })}
-        />
-        <button
-          type="submit"
-          id="commentBox"
-          className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-4 my-2 mr-2 text-sm font-medium text-white hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-          value={"Add Comment"}
-        >
-          Add Comment
-        </button>
-      </form>
-      {errors.description && (
-        <span className="text-red-500">This field is required!</span>
-      )}
-      <div>
-        {commentState.isLoading ? (
-          <>Loading...</>
-        ) : (
-          commentState.comments.map((comment) => {
-            return <p key={comment.id}>{comment.description}</p>;
-          })
-        )}
-      </div>
-    </div>
-  );
-};

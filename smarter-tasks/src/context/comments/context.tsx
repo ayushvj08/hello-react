@@ -13,6 +13,12 @@ const initialState = {
         "I've completed the design task. The development team can start working on it.",
       task_id: 1,
       owner: 1,
+      createdAt: new Date().toISOString(),
+      User: {
+        id: 1,
+        name: "test",
+        email: "test@test.com",
+      },
     },
   ],
   isLoading: false,
