@@ -2,7 +2,7 @@ import { Navigate, createBrowserRouter } from "react-router-dom";
 
 import Signin from "../pages/signin";
 import Signup from "../pages/signup";
-import { ProtectedRoute } from "./ProtectedRoutes";
+import { ProtectedRoute } from "./ProtectedRoute";
 import Notfound from "../pages/Notfound";
 import AccountLayout from "../layouts/account";
 import Projects from "../pages/projects";
